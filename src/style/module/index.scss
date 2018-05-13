@@ -1,0 +1,137 @@
+.home-content {
+    position: absolute;
+    top: 0;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    .item {
+        display: flex;
+        align-items: flex-start;
+        padding: 10px;
+        border-bottom: 1px dashed #ccc;
+    }
+    .item-img {
+        width: 78px;
+        height: 115px;
+        margin-right: 10px;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .item-info {
+        flex: 1;
+    }
+    .item-name {
+        font-size: 16px;
+        color: #000;
+    }
+    .item-intro {
+        padding-top: 5px;
+        font-size: 13px;
+        color: #666;
+    }
+}
+
+.top-content {
+    display: none;
+    overflow: scroll;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+.hot-content {
+    display: none;
+    overflow: auto;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+.search-content {
+    display: none;
+    overflow: auto;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    .search-input {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #f3f3f3;
+        input {
+            flex: 1;
+            border: 0;
+            outline: 0;
+            font-size: 14px;
+            line-height: 1.6;
+            height: 32px;
+            color: #444;
+            padding: 0 10px;
+            background: #f3f3f3;
+        }
+        button {
+            display: inline-block;
+            width: 60px;
+            height: 32px;
+            margin-left: 6px;
+            background: #00b51d;
+            outline: 0;
+            border: 0;
+            text-align: center;
+            color: #fff;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+    }
+}
+
+.loading-box {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    .icon-jiazai {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 24px;
+        color: #ccc;
+        animation: 1s rotate linear infinite;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.site-footer {
+    z-index: 100;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    box-shadow: 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    background: #fff;
+    .item {
+        flex: 1;
+        padding: 4px 0;
+        color: #666;
+        text-align: center;
+        &.active {
+            color: #00b51d;
+        }
+    }
+    .iconfont {
+        display: block;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .word {
+        font-size: 12px;
+        line-height: 16px;
+    }
+}

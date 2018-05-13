@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>豆瓣</title>
+
+    <link rel="stylesheet" href="../style/core.css" />
+    <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_664004_02npc4cx8kuo9a4i.css">
+    <script type="text/javascript" src="../script/jquery.js"></script>
+
+</head>
+
+<body>
+
+    <div class="home-content">
+        <div class="top-content">
+            <div class="wrap"></div>
+            <div class="loading-box">
+                <i class="iconfont icon-jiazai"></i>
+            </div>
+        </div>
+        <div class="hot-content">
+            <div class="wrap"></div>
+            <div class="loading-box">
+                <i class="iconfont icon-jiazai"></i>
+            </div>
+        </div>
+        <div class="search-content">
+            <div class="search-input">
+                <input type="search">
+                <button>搜索</button>
+            </div>
+            <div class="search-result"></div>
+            <div class="loading-box">
+                <i class="iconfont icon-jiazai"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-footer">
+        <div class="item">
+            <i class="iconfont icon-paiming"></i>
+            <p class="word">TOP250</p>
+        </div>
+        <div class="item">
+            <i class="iconfont icon-remen"></i>
+            <p class="word">即将上映</p>
+        </div>
+        <div class="item">
+            <i class="iconfont icon-sousuo"></i>
+            <p class="word">搜索</p>
+        </div>
+    </div>
+
+    <script id="tpl-douban" type="text/html">
+        {{each $data}}
+        <a href="{{$value.alt}}" class="item">
+            <div class="item-img">
+                <img src="{{$value.images.small}}" alt="">
+            </div>
+            <div class="item-info">
+                <div class="item-name">{{$value.title}}</div>
+                <div class="item-intro">
+                    <span style="color:#00B51D">{{$value.rating.average}}</span>
+                    <span>{{$value.collect_count}} 收藏</span>
+                </div>
+                <div class="item-intro">
+                    <span>{{$value.year}}</span> {{each $value.genres val key}}
+                    <span>{{val}}</span> {{/each}}
+                </div>
+                <div class="item-intro">
+                    <span>导演</span> {{each $value.directors val key}}
+                    <span>{{val.name}}</span> {{/each}}
+                </div>
+                <div class="item-intro">
+                    <span>主演</span> {{each $value.casts val key}}
+                    <span>{{val.name}}</span> {{/each}}
+                </div>
+            </div>
+        </a>
+        {{/each}}
+    </script>
+
+</body>
+<script type="text/javascript" src="../script/core.js"></script>
+<script type="text/javascript" src="../script/script.js"></script>
+
+</html>
