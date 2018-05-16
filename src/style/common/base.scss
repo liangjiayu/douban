@@ -61,8 +61,9 @@ h4,
 h5,
 h6,
 i {
-    font: normal 12px "Helvetica Neue", "Microsoft YaHei", Helvetica, STHeiTi,
-        sans-serif;
+    font: normal 12px BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
 }
