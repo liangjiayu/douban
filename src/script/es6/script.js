@@ -1,17 +1,17 @@
-$(function() {
+$(function () {
     let app = {
-        init: function() {
+        init: function () {
             this.$tab = $(".site-footer .item");
             this.$con = $(".home-content").children();
             this.bind();
             this.start();
         },
-        bind: function() {
+        bind: function () {
             let self = this;
             this.$tab.eq(0).addClass("active");
             this.$con.eq(0).show();
 
-            this.$tab.on("click", function() {
+            this.$tab.on("click", function () {
                 let index = $(this).index();
                 $(this)
                     .addClass("active")
@@ -24,7 +24,7 @@ $(function() {
                     .hide();
             });
         },
-        start: function() {
+        start: function () {
             top250.init();
             tomorrow.init();
             searchMovie.init();
@@ -32,7 +32,7 @@ $(function() {
     };
 
     let top250 = {
-        init: function() {
+        init: function () {
             this.count = 0;
             this.loading = false;
             this.$con = $(".top-content");
@@ -42,9 +42,9 @@ $(function() {
             this.getData();
             this.bind();
         },
-        bind: function() {
+        bind: function () {
             let self = this;
-            this.$con.on("scroll", function() {
+            this.$con.on("scroll", function () {
                 if (self.loading) {
                     return;
                 }
@@ -58,20 +58,20 @@ $(function() {
                 }
             });
         },
-        getData: function() {
+        getData: function () {
             let self = this;
             self.loading = true;
             self.$loading.show();
             $.ajax({
-                url: "https://api.douban.com/v2/movie/top250",
-                type: "GET",
-                dataType: "jsonp",
-                data: {
-                    start: self.count,
-                    count: 20
-                }
-            })
-                .done(function(data) {
+                    url: "https://api.douban.com/v2/movie/top250",
+                    type: "GET",
+                    dataType: "jsonp",
+                    data: {
+                        start: self.count,
+                        count: 20
+                    }
+                })
+                .done(function (data) {
                     self.total = data.total;
                     console.log(data);
                     self.render(data);
@@ -79,12 +79,12 @@ $(function() {
                     self.loading = false;
                     self.$loading.hide();
                 })
-                .fail(function(error) {
+                .fail(function (error) {
                     console.log(error);
                     self.$loading.hide();
                 });
         },
-        render: function(data) {
+        render: function (data) {
             let tpl = document.getElementById("tpl-douban").innerHTML;
             let subjects = data.subjects;
             let html = template.render(tpl, subjects);
@@ -93,7 +93,7 @@ $(function() {
     };
 
     let tomorrow = {
-        init: function() {
+        init: function () {
             this.count = 0;
             this.loading = false;
             this.$con = $(".hot-content");
@@ -102,9 +102,9 @@ $(function() {
             this.getData();
             this.bind();
         },
-        bind: function() {
+        bind: function () {
             let self = this;
-            this.$con.on("scroll", function() {
+            this.$con.on("scroll", function () {
                 if (self.loading) {
                     return;
                 }
@@ -118,20 +118,20 @@ $(function() {
                 }
             });
         },
-        getData: function() {
+        getData: function () {
             let self = this;
             self.loading = true;
             self.$loading.show();
             $.ajax({
-                url: "https://api.douban.com/v2/movie/coming_soon",
-                type: "GET",
-                dataType: "jsonp",
-                data: {
-                    start: self.count,
-                    count: 20
-                }
-            })
-                .done(function(data) {
+                    url: "https://api.douban.com/v2/movie/coming_soon",
+                    type: "GET",
+                    dataType: "jsonp",
+                    data: {
+                        start: self.count,
+                        count: 20
+                    }
+                })
+                .done(function (data) {
                     self.total = data.total;
                     console.log(data);
                     self.render(data);
@@ -139,12 +139,12 @@ $(function() {
                     self.loading = false;
                     self.$loading.hide();
                 })
-                .fail(function(error) {
+                .fail(function (error) {
                     console.log(error);
                     self.$loading.hide();
                 });
         },
-        render: function(data) {
+        render: function (data) {
             let tpl = document.getElementById("tpl-douban").innerHTML;
             let subjects = data.subjects;
             let html = template.render(tpl, subjects);
@@ -153,7 +153,7 @@ $(function() {
     };
 
     let searchMovie = {
-        init: function() {
+        init: function () {
             this.$wrap = $(".search-content .search-result");
             this.$btn = $(".search-input button");
             this.$input = $(".search-input input");
@@ -162,40 +162,40 @@ $(function() {
             this.$loading.hide();
             this.bind();
         },
-        bind: function() {
+        bind: function () {
             let self = this;
             if (self.loading) {
                 return;
             }
-            self.$btn.on("click", function() {
+            self.$btn.on("click", function () {
                 self.getData();
             });
         },
-        getData: function() {
+        getData: function () {
             let self = this;
             self.loading = true;
             self.$loading.show();
             $.ajax({
-                url: "https://api.douban.com/v2/movie/search",
-                type: "GET",
-                dataType: "jsonp",
-                data: {
-                    tag: self.$input.val(),
-                    q: self.$input.val()
-                }
-            })
-                .done(function(data) {
+                    url: "https://api.douban.com/v2/movie/search",
+                    type: "GET",
+                    dataType: "jsonp",
+                    data: {
+                        tag: self.$input.val(),
+                        q: self.$input.val()
+                    }
+                })
+                .done(function (data) {
                     console.log(data);
                     self.render(data);
                     self.loading = false;
                     self.$loading.hide();
                 })
-                .fail(function(error) {
+                .fail(function (error) {
                     console.log(error);
                     self.$loading.hide();
                 });
         },
-        render: function(data) {
+        render: function (data) {
             let tpl = document.getElementById("tpl-douban").innerHTML;
             let subjects = data.subjects;
             let html = template.render(tpl, subjects);
